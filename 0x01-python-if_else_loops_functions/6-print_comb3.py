@@ -5,4 +5,4 @@ for i in range(9):
             if i is 8:
                 print(i, j, sep='')
             else:
-                print(i, j, sep='', end = ", ")
+                print(i, j, sep='', end=", ")
