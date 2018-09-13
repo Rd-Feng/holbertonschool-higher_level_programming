@@ -6,6 +6,9 @@ if __name__ == "__main__":
     if argc == 0:
         print(argc, "arguments.")
     else:
-        print(argc, "arguments:")
+        if argc < 2:
+            print(argc, "argument:")
+        else:
+            print(argc, "arguments:")
         for i in range(argc):
             print("{}:".format(i + 1), argv[i + 1])
