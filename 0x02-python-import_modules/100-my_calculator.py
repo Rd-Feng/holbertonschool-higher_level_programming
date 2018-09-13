@@ -9,7 +9,7 @@ if __name__ == "__main__":
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         quit(1)
     op = ops.get(argv[2])
-    if op == None:
+    if op is None:
         print("Unknown operator. Available operators: +, -, * and /")
         quit(1)
     a, b = int(argv[1]), int(argv[3])
