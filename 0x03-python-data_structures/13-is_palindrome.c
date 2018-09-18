@@ -23,7 +23,6 @@ int is_palindrome(listint_t **head)
 		for (i = 0; i < half; i++, ptr = ptr->next)
 			if (arr[half - i - 1] != ptr->n)
 				return (0);
-		return (1);
 	}
 	return (1);
 }
