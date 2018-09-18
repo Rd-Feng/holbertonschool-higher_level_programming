@@ -1,7 +1,7 @@
 #include "lists.h"
 #include <stdlib.h>
 int list_len(listint_t *head);
-int is_palin_arr(int *arr, int size);
+listint_t *node(listint_t *head, int index);
 int *list_to_arr(listint_t *head, int size);
 /**
  * is_palindrome - check if a list is palindrome
@@ -11,18 +11,27 @@ int *list_to_arr(listint_t *head, int size);
  */
 int is_palindrome(listint_t **head)
 {
-	int n = list_len(*head), *arr = NULL;
+	int n = list_len(*head), *arr = NULL, half = n / 2;
+	listint_t *ptr = NULL;
 
 	if (!head)
 		exit(-1);
 	if (n > 1)
 	{
-		arr = list_to_arr(*head, n);
+		if (n % 2)
+			arr = list_to_arr(node(*head, half + 1), half);
+		else
+			arr = list_to_arr(node(*head, half), half);
 		if (!arr)
 			exit(-1);
-		n = is_palin_arr(arr, n);
+		for (n = 0, ptr = *head; n < half; n++, ptr = ptr->next)
+			if (ptr->n != arr[half - n - 1])
+			{
+				free(arr);
+				return (0);
+			}
 		free(arr);
-		return (n);
+		return (1);
 	}
 	return (1);
 }
@@ -37,22 +46,6 @@ int list_len(listint_t *head)
 	if (head)
 		return (1 + list_len(head->next));
 	return (0);
-}
-/**
- * is_palin_arr - check if an array is palindrome
- * @arr: array
- * @size: array size
- *
- * Return: 0 if not, 1 otherwise
- */
-int is_palin_arr(int *arr, int size)
-{
-	int i;
-
-	for (i = 0; i < size / 2; i++)
-		if (arr[i] != arr[size - i - 1])
-			return (0);
-	return (1);
 }
 /**
  * list_to_arr - convert a list into array
@@ -70,4 +63,17 @@ int *list_to_arr(listint_t *head, int size)
 		for (i = 0; i < size; i++, head = head->next)
 			arr[i] = head->n;
 	return (arr);
+}
+/**
+ * node - get node at index
+ * @head: head node
+ * @index: index
+ *
+ * Return: node at index
+ */
+listint_t *node(listint_t *head, int index)
+{
+	while (index--)
+		head = head->next;
+	return (head);
 }
