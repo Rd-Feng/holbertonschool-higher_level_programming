@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" define class Square """
 class Square:
     """ Square class with integer non-negative size """
     def __init__(self, size=0):

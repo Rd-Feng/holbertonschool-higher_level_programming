@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+""" define singly linked list components """
 class Node:
     """ a node in a singly-linked list """
 

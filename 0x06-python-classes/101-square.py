@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" define class Square """
 class Square:
     """ Square class with integer non-negative size and
     a length 2 tuple position. When the square is printed, its
