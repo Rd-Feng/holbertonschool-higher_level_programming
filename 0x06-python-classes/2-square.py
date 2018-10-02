@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 """ define class Square """
+
+
 class Square:
     """ Square class with integer non-negative size """
     def __init__(self, size=0):
+        """ init square instance """
         if not isinstance(size, int):
             raise TypeError('size must be an integer')
         elif size < 0:

@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 """ define class Square """
+
+
 class Square:
     """ Square class with integer non-negative size """
     def __init__(self, size=0):
+        """ init square instance """
         self.size = size
 
     def area(self):
@@ -11,10 +14,12 @@ class Square:
 
     @property
     def size(self):
+        """ retrieve size """
         return self.__size
 
     @size.setter
     def size(self, value):
+        """ set size """
         if not isinstance(value, int):
             raise TypeError('size must be an integer')
         elif value < 0:

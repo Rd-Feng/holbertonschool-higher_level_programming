@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 """ define class Square """
+
+
 class Square:
     """ Square class with integer non-negative size and
     a length 2 tuple position. When the square is printed, its
     top-left location will be decided by the position attribute"""
     def __init__(self, size=0, position=(0, 0)):
+        """ init square instance """
         self.size = size
         self.position = position
 
@@ -57,4 +60,5 @@ class Square:
         return str
 
     def __str__(self):
+        """ printable """
         return self.to_string()
