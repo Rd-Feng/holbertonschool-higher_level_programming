@@ -40,13 +40,15 @@ class Square:
         """ position setter """
         if ((not isinstance(value, tuple)) or
                 (len(value) != 2) or
+                (not isinstance(value[0], int)) or
+                (not isinstance(value[1], int)) or
                 (value[0] < 0 or value[1] < 0)):
             raise TypeError('position must be a tuple of 2 positive integers')
         self.__position = value
 
     def my_print(self):
         """ print the square """
-        print(self.to_string(), end="")
+        print(self.to_string())
 
     def to_string(self):
         """ convert this instance to string format """
@@ -57,6 +59,8 @@ class Square:
             str += " " * self.position[0] + "#" * self.size + "\n"
         if self.size == 0:
             str += "\n"
+        else:
+            str = str[:-1]
         return str
 
     def __str__(self):

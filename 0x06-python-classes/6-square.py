@@ -38,7 +38,7 @@ class Square:
     @position.setter
     def position(self, value):
         """ position setter """
-        if (
+        if ((not isinstance(value, tuple)) or
                 (len(value) != 2) or
                 (not isinstance(value[0], int)) or
                 (not isinstance(value[1], int)) or
@@ -48,7 +48,7 @@ class Square:
 
     def my_print(self):
         """ print the square """
-        print(self.to_string(), end="")
+        print(self.to_string())
 
     def to_string(self):
         """ convert this instance to string format """
@@ -59,6 +59,8 @@ class Square:
             str += " " * self.position[0] + "#" * self.size + "\n"
         if self.size == 0:
             str += "\n"
+        else:
+            str = str[:-1]
         return str
 
     def __str__(self):
