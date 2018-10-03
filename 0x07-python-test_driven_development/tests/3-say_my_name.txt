@@ -1,0 +1,23 @@
+Testing ``say_my_name`` from module ``say_my_name``
+------------
+>>> f = __import__('3-say_my_name').say_my_name
+
+input first name and last name
+>>> f("John", "Smith")
+My name is John Smith
+
+input only first name
+>>> f("Bob")
+My name is Bob 
+
+first name not a string
+>>> f(12, "white")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+last name not a string
+>>> f("Bob", 12)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
