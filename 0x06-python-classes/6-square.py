@@ -53,14 +53,13 @@ class Square:
     def to_string(self):
         """ convert this instance to string format """
         str = ""
+        if self.size == 0:
+            return str
         for i in range(self.position[1]):
             str += "\n"
         for i in range(self.size):
             str += " " * self.position[0] + "#" * self.size + "\n"
-        if self.size == 0:
-            str += "\n"
-        else:
-            str = str[:-1]
+        str = str[:-1]
         return str
 
     def __str__(self):
