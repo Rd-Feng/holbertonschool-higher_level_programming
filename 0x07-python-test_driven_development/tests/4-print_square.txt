@@ -1,0 +1,32 @@
+Testing ``print_square`` from ``4-print_square`` module
+-----------------
+>>> f = __import__('4-print_square').print_square
+
+>>> f('a')
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> f(-1)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+>>> f(-2.0)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> f(0)
+
+>>> f(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
