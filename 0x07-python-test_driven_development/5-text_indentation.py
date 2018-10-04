@@ -11,6 +11,7 @@ def text_indentation(text):
     isLeadingSp = True
     if not isinstance(text, str):
         raise TypeError('text must be a string')
+    text = text.strip(' ')
     for c in text:
         if c == ' ' and isLeadingSp:
             continue
