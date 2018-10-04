@@ -14,6 +14,7 @@ class TestMaxInteger(unittest.TestCase):
         #input None
         with self.assertRaises(TypeError):
             max_integer(None)
+            max_integer([1, 'a'])
         #no input
         self.assertEqual(max_integer(), None)
         #empty list
