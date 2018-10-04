@@ -12,7 +12,7 @@ def matrix_divided(matrix, div):
     # Check if matrix is a list of lists of integers or floats
     if ((not isinstance(matrix, list)) or
         (not all(isinstance(r, list) for r in matrix)) or
-        (not all(isinstance(e, (int, float)) for r in matrix for e in r))):
+            (not all(isinstance(e, (int, float)) for r in matrix for e in r))):
         raise TypeError(
             'matrix must be a matrix (list of lists) of integers/floats'
         )
