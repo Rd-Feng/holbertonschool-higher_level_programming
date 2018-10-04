@@ -15,7 +15,6 @@ Hello world.
 This should be in second line.
 <BLANKLINE>
 end
-<BLANKLINE>
 
 string with '?'
 >>> f("part 1? part2?end")
@@ -24,14 +23,12 @@ part 1?
 part2?
 <BLANKLINE>
 end
-<BLANKLINE>
 
 string with ':'
 >>> f("This is a sentence: I am Bob")
 This is a sentence:
 <BLANKLINE>
 I am Bob
-<BLANKLINE>
 
 string with '.' '?' and':'
 >>> f("part 1. part 2?part 3:   part 4")
@@ -42,4 +39,3 @@ part 2?
 part 3:
 <BLANKLINE>
 part 4
-<BLANKLINE>

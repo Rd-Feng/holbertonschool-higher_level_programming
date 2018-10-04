@@ -20,4 +20,3 @@ def text_indentation(text):
             if c in separators:
                 print("\n")
                 isLeadingSp = True
-    print("\n")
