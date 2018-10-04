@@ -9,12 +9,12 @@ class TestMaxInteger(unittest.TestCase):
     def test_max_integer(self):
         """Testing max_integer function with different inputs"""
         #input not list
-        with self.assertRaises(TypeError):
-            max_integer(5)
-        #input None
-        with self.assertRaises(TypeError):
-            max_integer(None)
-            max_integer([1, 'a'])
+        #with self.assertRaises(TypeError):
+        #    max_integer(5)
+        #input None or list contains different type
+        #with self.assertRaises(TypeError):
+        #    max_integer(None)
+        #    max_integer([1, 'a'])
         #no input
         self.assertEqual(max_integer(), None)
         #empty list
