@@ -1,0 +1,45 @@
+Testing ``text_indentation`` from module ``5-text_indentation``
+-----------------
+>>> f = __import__('5-text_indentation').text_indentation
+
+not a string
+>>> f(5)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+string with '.'
+>>> f("Hello world. This should be in second line.end")
+Hello world.
+<BLANKLINE>
+This should be in second line.
+<BLANKLINE>
+end
+<BLANKLINE>
+
+string with '?'
+>>> f("part 1? part2?end")
+part 1?
+<BLANKLINE>
+part2?
+<BLANKLINE>
+end
+<BLANKLINE>
+
+string with ':'
+>>> f("This is a sentence: I am Bob")
+This is a sentence:
+<BLANKLINE>
+I am Bob
+<BLANKLINE>
+
+string with '.' '?' and':'
+>>> f("part 1. part 2?part 3:   part 4")
+part 1.
+<BLANKLINE>
+part 2?
+<BLANKLINE>
+part 3:
+<BLANKLINE>
+part 4
+<BLANKLINE>
