@@ -1,6 +1,6 @@
 File | Description
 --- | ---
-tests/ | text files and scripts used to test
+tests/ | folder that holds text files and scripts used to test
 0-add_integer.py | add two integers
 2-matrix_divided.py | divide elements in matrix by some value
 3-say_my_name.py | print input strings
