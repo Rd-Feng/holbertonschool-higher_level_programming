@@ -1,21 +1,16 @@
 #!/usr/bin/python3
-""" define matrix_mul function"""
+""" define lazy_matrix_mul using numpy module"""
 
 
-def matrix_mul(m_a, m_b):
-    """ matrix_mul function"""
+def lazy_matrix_mul(m_a, m_b):
+    """ matrix mul using numpy module """
     __check_input(m_a, m_b)
-    # setup space for result
-    result = [[0 for e in range(len(m_b[0]))] for r in range(len(m_a))]
-    for i in range(len(result)):
-        for j in range(len(result[0])):
-            for k in range(len(m_a[0])):
-                result[i][j] += m_a[i][k] * m_b[k][j]
-    return result
+    import numpy as np
+    return np.matmul(m_a, m_b)
 
 
 def __check_input(m_a, m_b):
-    """ check valid input for matrix_mul function """
+    """ check input for lazy_matrix_mul """
     if not isinstance(m_a, list):
         raise TypeError('m_a must be a list')
     if not isinstance(m_b, list):
