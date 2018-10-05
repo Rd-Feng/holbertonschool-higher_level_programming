@@ -1,0 +1,100 @@
+Testing ``matrix_mul`` from 100-matrix_mul module
+--------------
+>>> f = __import__('100-matrix_mul').matrix_mul
+
+============================================================================
+input not matrix or input empty matrix
+>>> f(None, [[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list
+
+>>> f([[1, 2], [3, 4]], 123)
+Traceback (most recent call last):
+...
+TypeError: m_b must be a list
+
+m_a is a list of integer
+>>> f([1, 2], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list of lists
+
+m_b is a list of integer
+>>> f([[1], [2]], [1, 2])
+Traceback (most recent call last):
+...
+TypeError: m_b must be a list of lists
+
+m_a empty matrix
+>>> f([], [])
+Traceback (most recent call last):
+...
+ValueError: m_a can't be empty
+
+m_a empty matrix
+>>> f([], [])
+Traceback (most recent call last):
+...
+ValueError: m_a can't be empty
+
+m_b empty matrix
+>>> f([[1], [2]], [[]])
+Traceback (most recent call last):
+...
+ValueError: m_b can't be empty
+
+============================================================================
+matrix contains non numbers
+
+m_a element not number
+>>> f([['a'], ['b']], [[1], [2]])
+Traceback (most recent call last):
+...
+TypeError: m_a should contain only integers or floats
+
+m_b element not number
+>>> f([[1], [2]], [['a'], ['b']])
+Traceback (most recent call last):
+...
+TypeError: m_b should contain only integers or floats
+
+============================================================================
+matrix rows different sizes
+
+>>> f([[1, 2], [1]], [[1], [2]])
+Traceback (most recent call last):
+...
+TypeError: each row of m_a must should be of the same size
+
+>>> f([[1], [1]], [[1, 2], [1]])
+Traceback (most recent call last):
+...
+TypeError: each row of m_b must should be of the same size
+
+m_a 3x4 m_b 3x3
+>>> m_a = [[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]
+>>> m_b = [[1, 2, 3], [1, 2, 3], [1, 2, 3]]
+>>> f(m_a, m_b)
+Traceback (most recent call last):
+...
+ValueError: m_a and m_b can't be multiplied
+
+============================================================================
+valid matrix input
+
+square matrix mul
+>>> f([[1, 2], [3, 4]], [[4, 3], [2, 1]])
+[[8, 5], [20, 13]]
+
+rectangle matrix
+>>> f([[1, 2, 3], [4, 5, 6]], [[1, 2], [3, 4], [5, 6]])
+[[22, 28], [49, 64]]
+
+vector 3x1 mul 1x3
+>>> f([[1], [2], [3]], [[1, 2, 3]])
+[[1, 2, 3], [2, 4, 6], [3, 6, 9]]
+
+vector 1x3 mul 3x1
+>>> f([[1, 2, 3]], [[1], [2], [3]])
+[[14]]
