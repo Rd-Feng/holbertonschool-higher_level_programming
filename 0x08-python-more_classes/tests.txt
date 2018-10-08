@@ -1,0 +1,159 @@
+Testing ``Rectangle`` class from module ``9-rectangle``
+---------------
+>>> Rectangle = __import__('9-rectangle').Rectangle
+>>> rec = Rectangle('a')
+Traceback (most recent call last):
+...
+TypeError: width must be an integer
+
+>>> rec = Rectangle(0.1)
+Traceback (most recent call last):
+...
+TypeError: width must be an integer
+
+>>> rec = Rectangle(-1)
+Traceback (most recent call last):
+...
+ValueError: width must be >= 0
+
+>>> rec = Rectangle(1, 'a')
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
+
+>>> rec = Rectangle(1, 0.1)
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
+
+>>> rec = Rectangle(1, -1)
+Traceback (most recent call last):
+...
+ValueError: height must be >= 0
+
+>>> rec = Rectangle()
+>>> (rec.width, rec.height)
+(0, 0)
+
+>>> Rectangle.number_of_instances
+1
+
+>>> Rectangle.number_of_instances
+0
+
+>>> rec = Rectangle(5)
+>>> (rec.width, rec.height)
+(5, 0)
+
+>>> Rectangle.number_of_instances
+1
+>>> del rec
+Bye rectangle...
+
+>>> Rectangle.number_of_instances
+0
+
+>>> rec = Rectangle(4, 2)
+>>> tmp = Rectangle(0, 0)
+>>> (rec.width, rec.height)
+(4, 2)
+
+>>> Rectangle.number_of_instances
+2
+
+>>> del tmp
+Bye rectangle...
+
+>>> Rectangle.number_of_instances
+1
+
+>>> rec.width = 0
+>>> rec.height = 2
+>>> (rec.area(), rec.perimeter())
+(0, 0)
+
+>>> print(rec)
+<BLANKLINE>
+
+>>> str(rec) == ""
+True
+
+>>> rec
+Rectangle(0, 2)
+
+
+>>> rec.width = 4
+>>> rec.height = 0
+>>> (rec.area(), rec.perimeter())
+(0, 0)
+
+>>> print(rec)
+<BLANKLINE>
+
+>>> str(rec) == ""
+True
+
+>>> rec
+Rectangle(4, 0)
+
+>>> rec.width = 4
+>>> rec.height = 2
+>>> (rec.area(), rec.perimeter())
+(8, 12)
+
+>>> print(rec)
+####
+####
+
+>>> str(rec)
+'####\n####'
+
+>>> rec.print_symbol = "&"
+>>> print(rec)
+&&&&
+&&&&
+
+>>> str(rec)
+'&&&&\n&&&&'
+
+>>> del rec
+Bye rectangle...
+
+>>> rec0 = Rectangle(5, 0)
+>>> rec1 = Rectangle(5, 4)
+>>> rec2 = Rectangle(6, 4)
+>>> rec3 = Rectangle(4, 6)
+>>> Rectangle.bigger_or_equal(rec0, rec1)
+Rectangle(5, 4)
+
+>>> Rectangle.bigger_or_equal(rec1, rec0)
+Rectangle(5, 4)
+
+>>> Rectangle.bigger_or_equal(rec2, rec1)
+Rectangle(6, 4)
+
+>>> Rectangle.bigger_or_equal(rec2, rec3)
+Rectangle(6, 4)
+
+>>> Rectangle.number_of_instances
+4
+
+>>> del (rec0, rec1, rec2, rec3)
+Bye rectangle...
+Bye rectangle...
+Bye rectangle...
+Bye rectangle...
+
+>>> Rectangle.number_of_instances
+0
+
+>>> sq = Rectangle.square()
+>>> Rectangle.number_of_instances
+1
+
+>>> (sq.width, sq.height)
+(0, 0)
+
+>>> sq2 = Rectangle.square(5)
+>>> (sq2.width, sq2.height)
+(5, 5)
