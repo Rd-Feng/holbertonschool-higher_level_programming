@@ -61,3 +61,19 @@ TypeError: unorderable types: str() < int()
 >>> l = MyList([1, True, False, 2])
 >>> l.print_sorted()
 [False, 1, True, 2]
+
+>>> l = MyList([1.0, 3.0, 2.0])
+>>> l.print_sorted()
+[1.0, 2.0, 3.0]
+
+>>> l = MyList([float('inf'), float('nan'), 1.0, 3.0, 2.0, float('inf')])
+>>> l.print_sorted()
+[inf, nan, 1.0, 2.0, 3.0, inf]
+
+>>> l = MyList([float('inf'), 1, float('nan'), 1.0, 3.0, 2.0, float('inf')])
+>>> l.print_sorted()
+[1, 1.0, 2.0, 3.0, inf, nan, inf]
+
+>>> l = MyList([1, 2, 3.0, 4, 5])
+>>> l.print_sorted()
+[1, 2, 3.0, 4, 5]
