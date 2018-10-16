@@ -8,12 +8,9 @@ if __name__ == "__main__":
     from sys import argv
     import json
     try:
-        f = open("add_item.json", 'r')
-        l = json.loads(f.readline())
+        l = load("add_item.json")
         l.extend([e for e in argv[1:]])
     except FileNotFoundError:
         l = [e for e in argv[1:]]
     finally:
-        f = open("add_item.json", 'w')
-        f.write(json.dumps(l))
-        f.close()
+        save(l, "add_item.json")
