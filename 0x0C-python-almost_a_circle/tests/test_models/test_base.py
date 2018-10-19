@@ -16,6 +16,11 @@ class TestBase(unittest.TestCase):
         self.assertEqual(Base([1, 2, 3]).id, [1, 2, 3])
         self.assertEqual(Base().id, Base._Base__nb_objects)
         self.assertEqual(Base(None).id, Base._Base__nb_objects)
+        self.assertEqual(Base(1.2).id, 1.2)
+        self.assertEqual(Base(float('inf')).id, float('inf'))
+        n = float('nan')
+        tmp = Base(n)
+        self.assertNotEqual(tmp.id, tmp.id)
         with self.assertRaises(TypeError):
             Base(dne='this variable does not exist')
         with self.assertRaises(TypeError):

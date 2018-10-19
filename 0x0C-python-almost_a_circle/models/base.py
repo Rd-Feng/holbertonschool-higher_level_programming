@@ -48,9 +48,10 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        """load from json file and return list of objects"""
         try:
             with open(cls.__name__ + '.json', encoding='utf-8') as f:
-                l = __import__('json').loads(f.readline())
+                l = cls.from_json_string(f.readline())
         except FileNotFoundError:
             l = []
         finally:

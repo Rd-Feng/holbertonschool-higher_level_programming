@@ -44,11 +44,8 @@ class Square(Rectangle):
         """returns dictionary representation of rectangle"""
         return {'id': self.id, 'size': self.size, 'x': self.x, 'y': self.y}
 
-    @staticmethod
-    def from_json_string(json_string):
-        """returns the list that JSON string represents"""
-
     def __str__(self):
+        """string representation"""
         return "[Square] ({}) {}/{} - {}".format(
             self.id,
             self.x,
