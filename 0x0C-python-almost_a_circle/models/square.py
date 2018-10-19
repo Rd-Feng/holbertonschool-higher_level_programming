@@ -28,23 +28,17 @@ class Square(Rectangle):
         3rd argument should be the x attribute
         4th argument should be the y attribute
         If args is not empty, kwargs will be ignored"""
+        attr = ('id', 'size', 'x', 'y')
         if len(args) > 4:
-            args = args[:4]
-        if len(args) == 4:
-            self.id, self.size, self.x, self.y = map(lambda e: e, args)
-        elif len(args) == 3:
-            self.id, self.size, self.x = map(lambda e: e, args)
-        elif len(args) == 2:
-            self.id, self.size = map(lambda e: e, args)
-        elif len(args) == 1:
-            self.id = args[0]
+            raise TypeError('update() takes at most 5 arguments')
+        elif len(args) > 0:
+            for i in range(len(args)):
+                setattr(self, attr[i], args[i])
         else:
-            #args is empty
             for k, v in kwargs.items():
-                if k in ['size', 'width', 'height']:
-                    self.size = v
-                else:
-                    setattr(self, k, v)
+                if k not in attr:
+                    raise TypeError('unexpected keyword argument {}'.format(k))
+                setattr(self, k, v)
 
     def to_dictionary(self):
         """returns dictionary representation of rectangle"""

@@ -100,22 +100,16 @@ class Rectangle(Base):
         4th argument should be the x attribute
         5th argument should be the y attribute
         If args is not empty, kwargs will be ignored"""
+        attr = ('id', 'width', 'height', 'x', 'y')
         if len(args) > 5:
-            args = args[:5]
-        if len(args) == 5:
-            self.id, self.width, self.height, self.x, self.y =\
-                                                        map(lambda e: e, args)
-        elif len(args) == 4:
-            self.id, self.width, self.height, self.x = map(lambda e: e, args)
-        elif len(args) == 3:
-            self.id, self.width, self.height = map(lambda e: e, args)
-        elif len(args) == 2:
-            self.id, self.width = map(lambda e: e, args)
-        elif len(args) == 1:
-            self.id = args[0]
+            raise TypeError('update() takes at most 5 arguments')
+        elif len(args) > 0:
+            for i in range(len(args)):
+                setattr(self, attr[i], args[i])
         else:
-            # args is empty
             for k, v in kwargs.items():
+                if k not in attr:
+                    raise TypeError('unexpected keyword argument {}'.format(k))
                 setattr(self, k, v)
 
     def to_dictionary(self):
