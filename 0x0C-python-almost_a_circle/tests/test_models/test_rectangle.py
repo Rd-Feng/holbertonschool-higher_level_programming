@@ -229,6 +229,13 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle.create(None)
 
+    def test_create_success(self):
+        """test create success cases"""
+        d = {'id': 0, 'width': 2, 'height': 4, 'x': 1, 'y': 1}
+        r = Rectangle(2, 4, 1, 1, 0)
+        self.assertEqual(Rectangle.create(**d).to_dictionary(),
+                         r.to_dictionary())
+
     def test_load_from_file(self):
         """test load_from_file"""
         recs = [Rectangle(2, 4), Rectangle(1, 2, 3, 4, 0)]
