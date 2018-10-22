@@ -196,11 +196,8 @@ class TestRectangle(unittest.TestCase):
 
     def test_save_to_file_fail(self):
         """test save_to_file fail cases"""
-        tuples = (Rectangle(2, 4), Rectangle(1, 2, 3, 4, 0))
         mixed = [1, 2, 3, Rectangle(2, 4), Rectangle(1, 2, 3, 4, 0)]
-        with self.assertRaises(TypeError):
-            Rectangle.save_to_file(tuples)
-        with self.assertRaises(TypeError):
+        with self.assertRaises(AttributeError):
             Rectangle.save_to_file(mixed)
 
     def test_save_to_file_success(self):
@@ -211,6 +208,35 @@ class TestRectangle(unittest.TestCase):
             content = f.read()
         l = __import__('json').loads(content)
         self.assertEqual([e.to_dictionary() for e in recs], l)
+        os.remove('Rectangle.json')
+
+    def test_create_fail(self):
+        """ test create fail cases"""
+        with self.assertRaises(TypeError):
+            Rectangle.create(invalidkey=5)
+        with self.assertRaises(ValueError):
+            Rectangle.create(width=-2)
+        with self.assertRaises(TypeError):
+            Rectangle.create(width='abc')
+        with self.assertRaises(TypeError):
+            Rectangle.create(width=(1, 2, 3))
+        with self.assertRaises(TypeError):
+            Rectangle.create('not a dictionary')
+        with self.assertRaises(TypeError):
+            Rectangle.create([1, 2, 3])
+        with self.assertRaises(TypeError):
+            Rectangle.create((1, 2, 3))
+        with self.assertRaises(TypeError):
+            Rectangle.create(None)
+
+    def test_load_from_file(self):
+        """test load_from_file"""
+        recs = [Rectangle(2, 4), Rectangle(1, 2, 3, 4, 0)]
+        Rectangle.save_to_file(recs)
+        recs_dict = [e.to_dictionary() for e in recs]
+        l = Rectangle.load_from_file()
+        l = [e.to_dictionary() for e in l]
+        self.assertEqual(recs_dict, l)
         os.remove('Rectangle.json')
 
 if __name__ == "__main__":
