@@ -30,6 +30,11 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
+        if (not isinstance(list_objs, list) or
+            not all([cls.__name__ == e.__class__.__name__
+                     for e in list_objs])):
+            raise TypeError('list_objs must be a list of {}'.format(
+                cls.__name__))
         """save json representation of the list of objects"""
         with open(cls.__name__ + '.json', 'w', encoding='utf-8') as f:
             if list_objs is None:

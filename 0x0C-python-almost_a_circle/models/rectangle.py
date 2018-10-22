@@ -84,8 +84,6 @@ class Rectangle(Base):
     def display(self):
         """display rectangle with '#'"""
         string = ""
-        if self.area() == 0:
-            return string
         for i in range(self.y):
             string += "\n"
         for i in range(self.height):
@@ -105,12 +103,18 @@ class Rectangle(Base):
             raise TypeError('update() takes at most 5 arguments')
         elif len(args) > 0:
             for i in range(len(args)):
-                setattr(self, attr[i], args[i])
+                if attr[i] == 'id' and args[i] is None:
+                    super().__init__()
+                else:
+                    setattr(self, attr[i], args[i])
         else:
             for k, v in kwargs.items():
                 if k not in attr:
                     raise TypeError('unexpected keyword argument {}'.format(k))
-                setattr(self, k, v)
+                if k == 'id' and v is None:
+                    super().__init__()
+                else:
+                    setattr(self, k, v)
 
     def to_dictionary(self):
         """returns dictionary representation of rectangle"""

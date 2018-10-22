@@ -33,12 +33,20 @@ class Square(Rectangle):
             raise TypeError('update() takes at most 5 arguments')
         elif len(args) > 0:
             for i in range(len(args)):
-                setattr(self, attr[i], args[i])
+                if attr[i] == 'id' and args[i] is None:
+                    self._Base__nb_objects += 1
+                    self.id = self._Base__nb_objects
+                else:
+                    setattr(self, attr[i], args[i])
         else:
             for k, v in kwargs.items():
                 if k not in attr:
                     raise TypeError('unexpected keyword argument {}'.format(k))
-                setattr(self, k, v)
+                if k == 'id' and v is None:
+                    self._Base__nb_objects += 1
+                    self.id = self._Base__nb_objects
+                else:
+                    setattr(self, k, v)
 
     def to_dictionary(self):
         """returns dictionary representation of rectangle"""
