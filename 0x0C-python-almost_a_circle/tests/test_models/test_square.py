@@ -10,7 +10,7 @@ from models.square import Square
 class TestSquare(unittest.TestCase):
     """test Square class"""
 
-    def test_init_error_size(self):
+    def test_init_error(self):
         """test init"""
         with self.assertRaises(TypeError) as e:
             Square('abc')
@@ -18,8 +18,19 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             Square(0)
         self.assertEqual(str(e.exception), 'width must be > 0')
+        with self.assertRaises(ValueError) as e:
+            Square(-2)
+        self.assertEqual(str(e.exception), 'width must be > 0')
         with self.assertRaises(TypeError):
             Square(1, 2, 3, 4, 5, 6)
+        with self.assertRaises(TypeError):
+            Square(1, "2")
+        with self.assertRaises(TypeError):
+            Square(1, 2, "3")
+        with self.assertRaises(ValueError):
+            Square(1, -2)
+        with self.assertRaises(ValueError):
+            Square(1, 2, -3)
 
     def test_init_success(self):
         """test init success case"""
@@ -113,6 +124,16 @@ class TestSquare(unittest.TestCase):
             content = f.read()
         l = __import__('json').loads(content)
         self.assertEqual([e.to_dictionary() for e in sqs], l)
+        os.remove('Square.json')
+        Square.save_to_file(None)
+        with open('Square.json', encoding='utf-8') as f:
+            content = f.read()
+        self.assertEqual(content, '[]')
+        os.remove('Square.json')
+        Square.save_to_file([])
+        with open('Square.json', encoding='utf-8') as f:
+            content = f.read()
+        self.assertEqual(content, '[]')
         os.remove('Square.json')
 
     def test_create_fail(self):

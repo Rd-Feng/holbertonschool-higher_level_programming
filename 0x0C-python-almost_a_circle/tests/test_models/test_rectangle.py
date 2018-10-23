@@ -209,6 +209,16 @@ class TestRectangle(unittest.TestCase):
         l = __import__('json').loads(content)
         self.assertEqual([e.to_dictionary() for e in recs], l)
         os.remove('Rectangle.json')
+        Rectangle.save_to_file(None)
+        with open('Rectangle.json', encoding='utf-8') as f:
+            content = f.read()
+        self.assertEqual(content, '[]')
+        os.remove('Rectangle.json')
+        Rectangle.save_to_file([])
+        with open('Rectangle.json', encoding='utf-8') as f:
+            content = f.read()
+        self.assertEqual(content, '[]')
+        os.remove('Rectangle.json')
 
     def test_create_fail(self):
         """ test create fail cases"""
