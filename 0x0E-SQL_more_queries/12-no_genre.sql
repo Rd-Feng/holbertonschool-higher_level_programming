@@ -1,4 +1,4 @@
--- list all shows that have at least one genre linked
+-- list all shows that have no genre
 SELECT shows.title, show_genres.genre_id
 FROM tv_shows AS shows
 LEFT JOIN tv_show_genres AS show_genres
