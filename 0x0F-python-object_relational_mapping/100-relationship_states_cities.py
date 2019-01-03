@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""lists all State objects from the database hbtn_0e_6_usa
+"""adds rows using relationship
 """
 from sys import argv
 from relationship_state import Base, State
