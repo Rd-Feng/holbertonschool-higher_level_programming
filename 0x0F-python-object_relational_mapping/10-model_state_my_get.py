@@ -3,7 +3,7 @@
 """
 from sys import argv
 from model_state import Base, State
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
@@ -13,7 +13,10 @@ if __name__ == "__main__":
         )
     )
     session = sessionmaker(bind=engine)()
-    for state in session.query(State).order_by(State.id).filter(
-                State.name == argv[4]
-            ):
-        print("{}".format(state.id))
+    result = session.query(State).order_by(State.id).filter(
+                State.name == func.binary(argv[4])
+            ).first()
+    if result:
+        print("{}".format(result.id))
+    else:
+        print("Not found")
