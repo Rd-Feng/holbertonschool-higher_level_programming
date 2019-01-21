@@ -5,9 +5,10 @@ import requests
 from sys import argv
 
 
-r = requests.get(argv[1])
-try:
-    r.raise_for_status()
-except requests.exceptions.HTTPError as e:
-    print(i)
-    print("Error code: {}".format(e.response.status_code))
+if __name__ == '__main__':
+    r = requests.get(argv[1])
+    try:
+        r.raise_for_status()
+    except requests.exceptions.HTTPError as e:
+        print(i)
+        print("Error code: {}".format(e.response.status_code))

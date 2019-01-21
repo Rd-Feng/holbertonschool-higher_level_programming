@@ -6,15 +6,16 @@ import requests
 from sys import argv
 
 
-args = {'q': ""}
-try:
-    args['q'] = argv[1]
-except:
-    pass
-r = requests.post('http://0.0.0.0:5000/search_user', data=args)
-try:
-    r.json()
-    u = r.json()
-    print('[{}] {}'.format(u['id'], u['name']))
-except:
-    print('No result')
+if __name__ == '__main__':
+    args = {'q': ""}
+    try:
+        args['q'] = argv[1]
+    except:
+        pass
+    r = requests.post('http://0.0.0.0:5000/search_user', data=args)
+    try:
+        r.json()
+        u = r.json()
+        print('[{}] {}'.format(u['id'], u['name']))
+    except:
+        print('No result')
