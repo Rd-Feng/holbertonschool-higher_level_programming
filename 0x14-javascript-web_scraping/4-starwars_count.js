@@ -8,9 +8,11 @@ request.get(process.argv[2], function (err, response, body) {
     const films = JSON.parse(body).results;
     let count = 0;
     films.forEach(film => {
-      if (film.characters.includes(character)) {
-        count++;
-      }
+      film.characters.forEach(char => {
+        if (char === character) {
+          count++;
+        }
+      });
     });
     console.log(count);
   } else {
