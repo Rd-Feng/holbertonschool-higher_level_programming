@@ -7,13 +7,13 @@ request.get(process.argv[2], function (err, response, body) {
   } else if (response.statusCode === 200) {
     const films = JSON.parse(body).results;
     let count = 0;
-    films.forEach(film => {
-      film.characters.forEach(char => {
+    for (let film of films) {
+      for (let char of film.characters) {
         if (char === character) {
           count++;
         }
-      });
-    });
+      }
+    }
     console.log(count);
   } else {
     console.log('Error:', response.statusCode);
