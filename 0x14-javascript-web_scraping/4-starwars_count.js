@@ -2,7 +2,7 @@
 const request = require('request');
 const character = 'https://swapi.co/api/people/18/';
 if (process.argv[2] !== undefined) {
-  request({ url: process.argv[2], methods: 'GET' }, function (err, response, body) {
+  request.get(process.argv[2], function (err, response, body) {
     if (err) {
       console.log(err);
     } else if (response.statusCode === 200) {
@@ -14,6 +14,8 @@ if (process.argv[2] !== undefined) {
         }
       });
       console.log(count);
+    } else {
+      console.log('Error:', response.statusCode);
     }
   });
 }
