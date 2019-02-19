@@ -5,7 +5,7 @@ if (process.argv[2] !== undefined) {
   request({ url: process.argv[2], methods: 'GET' }, function (err, response, body) {
     if (err) {
       console.log(err);
-    } else {
+    } else if (response.statusCode == 200) {
       const films = JSON.parse(body).results;
       let count = 0;
       films.forEach(film => {
