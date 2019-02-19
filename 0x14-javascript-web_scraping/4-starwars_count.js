@@ -1,6 +1,5 @@
 #!/usr/bin/node
 const request = require('request');
-const character = 'https://swapi.co/api/people/18/';
 request.get(process.argv[2], function (err, response, body) {
   if (err) {
     throw err;
@@ -9,13 +8,11 @@ request.get(process.argv[2], function (err, response, body) {
     let count = 0;
     for (let film of films) {
       for (let char of film.characters) {
-        if (char === character) {
+        if (char.endsWith('18/')) {
           count++;
         }
       }
     }
     console.log(count);
-  } else {
-    console.log('Error:', response.statusCode);
   }
 });
